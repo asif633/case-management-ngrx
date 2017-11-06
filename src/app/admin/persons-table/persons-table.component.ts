@@ -1,26 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Person } from '../shared/person.model';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Person } from '../shared/person-store/person.model';
 
 @Component({
   selector: 'app-persons-table',
   templateUrl: './persons-table.component.html',
-  styleUrls: ['./persons-table.component.css']
+  styleUrls: ['./persons-table.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonsTableComponent implements OnInit {
-  persons: Person[];
+  @Input() persons: Person[];
 
   constructor() { }
 
   ngOnInit() {
-    this.persons = [
-      {id: '1', name: 'Asif', age: 32, profession: 'SW'},
-      {id: '1', name: 'Asif', age: 32, profession: 'SW'},
-      {id: '1', name: 'Asif', age: 32, profession: 'SW'},
-      {id: '1', name: 'Asif', age: 32, profession: 'SW'},
-      {id: '1', name: 'Asif', age: 32, profession: 'SW'},
-      {id: '1', name: 'Asif', age: 32, profession: 'SW'},
-      {id: '1', name: 'Asif', age: 32, profession: 'SW'}
-    ];
+    
   }
 
 }

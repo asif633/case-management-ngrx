@@ -3,14 +3,14 @@
     <div class="ui-g-12 ui-md-4">
         <div class="ui-inputgroup">
             <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-            <input type="text" pInputText placeholder="Username">         
+            <input type="text" pInputText placeholder="Name" name="name" [(ngModel)]="name">         
         </div>
     </div>
     
     <div class="ui-g-12 ui-md-4">
         <div class="ui-inputgroup">
             <span class="ui-inputgroup-addon">$</span>
-            <input type="text" pInputText placeholder="Price">   
+            <input type="number" pInputText placeholder="Age" name="age" [(ngModel)]="age">   
             <span class="ui-inputgroup-addon">.00</span>      
         </div>
     </div>
@@ -18,7 +18,9 @@
     <div class="ui-g-12 ui-md-4">
         <div class="ui-inputgroup">
             <span class="ui-inputgroup-addon">www</span>
-            <input type="text" pInputText placeholder="Website">      
+            <input type="text" pInputText placeholder="Profession" name="profession" [(ngModel)]="profession">      
         </div>
     </div>
+
+    <button pButton type="button" (click)="onclick()" label="Add"></button>
 </div>

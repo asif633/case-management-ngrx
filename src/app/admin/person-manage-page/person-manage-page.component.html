@@ -1,8 +1,8 @@
 <div class="ui-g">
   <div class="ui-g-12 ui-md-6 ui-lg-6">
-    <app-persons-table></app-persons-table>
+    <app-persons-table [persons]="persons | async"></app-persons-table>
   </div>
   <div class="ui-g-12 ui-md-6 ui-lg-6">
-    <app-person-form></app-person-form>
+    <app-person-form (personToEmit)="getPerson($event)"></app-person-form>
   </div>
 </div>
