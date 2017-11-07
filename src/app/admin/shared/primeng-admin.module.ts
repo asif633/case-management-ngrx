@@ -4,10 +4,10 @@ import {MenuItem} from 'primeng/components/common/api';
 import {TabMenuModule} from 'primeng/primeng';
 import {DataTableModule,SharedModule} from 'primeng/primeng';
 import {InputTextModule} from 'primeng/primeng';
-import {ButtonModule} from 'primeng/primeng';
+import {ButtonModule, DialogModule} from 'primeng/primeng';
 
 @NgModule({
-  imports: [AccordionModule, DataTableModule, SharedModule, InputTextModule, ButtonModule, TabMenuModule],
-  exports: [AccordionModule, DataTableModule, SharedModule, InputTextModule, ButtonModule, TabMenuModule]
+  imports: [AccordionModule, DataTableModule, SharedModule, InputTextModule, ButtonModule, TabMenuModule, DialogModule],
+  exports: [AccordionModule, DataTableModule, SharedModule, InputTextModule, ButtonModule, TabMenuModule, DialogModule]
 })
 export class PrimeNgAdminModule { }

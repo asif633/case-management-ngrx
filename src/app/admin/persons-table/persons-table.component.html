@@ -1,6 +1,10 @@
-<p-dataTable [value]="persons">
+<p-dataTable [value]="persons" selectionMode="single" (onRowSelect)="onRowSelect($event)">
   <p-column field="id" header="Id"></p-column>
   <p-column field="name" header="Name"></p-column>
   <p-column field="age" header="Age"></p-column>
   <p-column field="profession" header="Profession"></p-column>
 </p-dataTable>
+
+<p-dialog header="Person Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+  <app-person-form [updatePerson]="selectedPerson" (personToUpdate)="toUpdate($event)" (personToDelete)="toDelete($event)"></app-person-form>
+</p-dialog>

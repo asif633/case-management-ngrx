@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Person } from '../shared/person-store/person.model';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-person-form',
@@ -8,19 +9,48 @@ import { Person } from '../shared/person-store/person.model';
 })
 export class PersonFormComponent implements OnInit {
   @Output() personToEmit: EventEmitter<Person>;
+  @Output() personToUpdate: EventEmitter<Person>;
+  @Output() personToDelete: EventEmitter<string>;
+  @Input() updatePerson: Person;
   name: string;
   age: number;
   profession: string;
+  private id: string;
 
   constructor() {
     this.personToEmit = new EventEmitter<Person>();
+    this.personToUpdate = new EventEmitter<Person>();
+    this.personToDelete = new EventEmitter<string>();
   }
 
   ngOnInit() {
+    if (this.updatePerson) {
+      this.name = this.updatePerson.name;
+      this.age = this.updatePerson.age;
+      this.profession = this.updatePerson.profession;
+      this.id = this.updatePerson.id;
+    }
   }
 
-  onclick(){
-    this.personToEmit.emit({id: '1', name: this.name, age: this.age, profession: this.profession});
+  ngOnChanges() {
+    if (this.updatePerson) {
+      this.name = this.updatePerson.name;
+      this.age = this.updatePerson.age;
+      this.profession = this.updatePerson.profession;
+      this.id = this.updatePerson.id;
+    }
+  }
+
+  add() {
+    this.personToEmit.emit({id: UUID.UUID(), name: this.name, age: this.age, profession: this.profession});
+  }
+
+  update() {
+    this.personToUpdate.emit({id: this.id, name: this.name, age: this.age, profession: this.profession});
+  }
+
+  delete() {
+    this.personToDelete.emit(this.id);
   }
 
 }

@@ -2,25 +2,32 @@
 <div class="ui-g ui-fluid">
     <div class="ui-g-12 ui-md-4">
         <div class="ui-inputgroup">
-            <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-            <input type="text" pInputText placeholder="Name" name="name" [(ngModel)]="name">         
-        </div>
-    </div>
-    
-    <div class="ui-g-12 ui-md-4">
-        <div class="ui-inputgroup">
-            <span class="ui-inputgroup-addon">$</span>
-            <input type="number" pInputText placeholder="Age" name="age" [(ngModel)]="age">   
-            <span class="ui-inputgroup-addon">.00</span>      
-        </div>
-    </div>
-            
-    <div class="ui-g-12 ui-md-4">
-        <div class="ui-inputgroup">
-            <span class="ui-inputgroup-addon">www</span>
-            <input type="text" pInputText placeholder="Profession" name="profession" [(ngModel)]="profession">      
+            <span class="ui-inputgroup-addon">
+                <i class="fa fa-user"></i>
+            </span>
+            <input type="text" pInputText placeholder="Name" name="name" [(ngModel)]="name">
         </div>
     </div>
 
-    <button pButton type="button" (click)="onclick()" label="Add"></button>
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">$</span>
+            <input type="number" pInputText placeholder="Age" name="age" [(ngModel)]="age">
+            <span class="ui-inputgroup-addon">.00</span>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon">www</span>
+            <input type="text" pInputText placeholder="Profession" name="profession" [(ngModel)]="profession">
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <button pButton type="button" (click)="add()" label="Add"></button>
+            <button pButton type="button" (click)="update()" label="Update"></button>
+            <button pButton type="button" (click)="delete()" label="Delete"></button>
+        </div>
+    </div>
 </div>
