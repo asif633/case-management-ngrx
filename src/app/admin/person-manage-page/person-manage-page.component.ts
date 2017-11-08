@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../shared/store/state';
 import { Observable } from 'rxjs/Observable';
 import { getPersons } from '../shared/person-store/person.state';
-import { AddPerson, UpdatePerson, DeletePerson } from '../shared/person-store/person.actions';
+import { AddPerson, UpdatePerson, DeletePerson, LoadPersons } from '../shared/person-store/person.actions';
 
 @Component({
   selector: 'app-person-manage-page',
@@ -27,6 +27,7 @@ export class PersonManagePageComponent implements OnInit {
     //   {id: '1', name: 'Asif', age: 32, profession: 'SW'}
     // ];
     this.persons = this.store.select(getPersons);
+    this.store.dispatch(new LoadPersons());
   }
 
   getPerson(event){
@@ -40,6 +41,7 @@ export class PersonManagePageComponent implements OnInit {
   }
 
   toDelete(event){
+    console.log('event', event);
     this.store.dispatch(new DeletePerson(event));
   }
 

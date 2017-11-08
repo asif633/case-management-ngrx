@@ -16,6 +16,7 @@ export class PersonFormComponent implements OnInit {
   age: number;
   profession: string;
   private id: string;
+  private personKey: string;
 
   constructor() {
     this.personToEmit = new EventEmitter<Person>();
@@ -29,6 +30,7 @@ export class PersonFormComponent implements OnInit {
       this.age = this.updatePerson.age;
       this.profession = this.updatePerson.profession;
       this.id = this.updatePerson.id;
+      this.personKey = this.updatePerson.$key;
     }
   }
 
@@ -38,6 +40,7 @@ export class PersonFormComponent implements OnInit {
       this.age = this.updatePerson.age;
       this.profession = this.updatePerson.profession;
       this.id = this.updatePerson.id;
+      this.personKey = this.updatePerson.$key;
     }
   }
 
@@ -46,11 +49,11 @@ export class PersonFormComponent implements OnInit {
   }
 
   update() {
-    this.personToUpdate.emit({id: this.id, name: this.name, age: this.age, profession: this.profession});
+    this.personToUpdate.emit({$key: this.updatePerson.$key, id: this.id, name: this.name, age: this.age, profession: this.profession});
   }
 
   delete() {
-    this.personToDelete.emit(this.id);
+    this.personToDelete.emit(this.personKey);
   }
 
 }

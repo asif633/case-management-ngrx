@@ -5,11 +5,14 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule, routerReducer, RouterStateSerializer } from '@ngrx/router-store';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { reducers } from './shared/store/state';
 import { CustomRouterStateSerializer } from './shared/store/router.util';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { CustomRouterStateSerializer } from './shared/store/router.util';
     StoreDevtoolsModule.instrument({
       maxAge: 25 //  Retains last 25 states
     }),
-    StoreRouterConnectingModule
+    StoreRouterConnectingModule,
+    AngularFireModule.initializeApp(environment.firebaseCredentials),
+    AngularFireDatabaseModule,
   ],
   providers: [{ provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }],
   bootstrap: [AppComponent]

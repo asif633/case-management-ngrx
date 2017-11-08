@@ -10,6 +10,13 @@ import { AdminDashboardPageComponent } from './admin-dashboard-page.component';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { personReducer } from './shared/person-store/person.reducer';
+import { caseReducer } from './shared/case-store/case.reducer';
+import { CaseContainerComponent } from './case-container/case-container.component';
+import { CaseTableComponent } from './case-table/case-table.component';
+import { CaseFormComponent } from './case-form/case-form.component';
+import { EffectsModule } from '@ngrx/effects';
+import { PersonEffectsService } from './shared/person-store/person.effects';
+import { PersonService } from './shared/person-store/person.service';
 
 @NgModule({
   imports: [
@@ -17,8 +24,11 @@ import { personReducer } from './shared/person-store/person.reducer';
     AdminRoutingModule,
     PrimeNgAdminModule,
     FormsModule,
-    StoreModule.forFeature('personState', personReducer)
+    StoreModule.forFeature('personState', personReducer),
+    StoreModule.forFeature('case', caseReducer),
+    EffectsModule.forFeature([PersonEffectsService]),
   ],
-  declarations: [PersonsTableComponent, PersonFormComponent, PersonManagePageComponent, AdminDashboardPageComponent]
+  declarations: [PersonsTableComponent, PersonFormComponent, PersonManagePageComponent, AdminDashboardPageComponent, CaseContainerComponent, CaseTableComponent, CaseFormComponent],
+  providers: [PersonService]
 })
 export class AdminModule { }

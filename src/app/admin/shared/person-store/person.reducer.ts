@@ -3,7 +3,11 @@ import { PersonState, initialState } from './person.state';
 import * as personActions from './person.actions';
 import { UPDATE_PERSON } from './person.actions';
 
-export const personReducer: ActionReducer<PersonState> = (state = initialState, action: personActions.Actions): PersonState => {
+export function personReducer(
+  state: PersonState = initialState,
+  action: personActions.Actions
+){
+//const personReducer: ActionReducer<PersonState> = (state = initialState, action: personActions.Actions): PersonState => {
   switch (action.type) {
     case personActions.LOAD_PERSON: {
       return {
@@ -30,11 +34,11 @@ export const personReducer: ActionReducer<PersonState> = (state = initialState, 
       };
     }
     case (personActions.UPDATE_PERSON):
-      let newP = action.payload;
+      const newP = action.payload;
       return {
         ...state,
         persons: state.persons.map(item => {
-          return item.id === action.payload.id
+          return item.$key === action.payload.$key
             ? Object.assign({}, item, newP)
             : item;
         })
@@ -42,7 +46,7 @@ export const personReducer: ActionReducer<PersonState> = (state = initialState, 
     case personActions.DELETE_PERSON:
       return {
         ...state,
-        persons: state.persons.filter(item => item.id !== action.payload)
+        persons: state.persons.filter(item => item.$key !== action.payload)
       };
     default: {
       return state;

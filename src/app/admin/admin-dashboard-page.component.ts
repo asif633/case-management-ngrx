@@ -16,7 +16,7 @@ export class AdminDashboardPageComponent implements OnInit {
   ngOnInit() {
     this.items = [
         {label: 'Manage Person', icon: 'fa-bar-chart', routerLink: 'manage-person'},
-        {label: 'Calendar', icon: 'fa-calendar'},
+        {label: 'Calendar', icon: 'fa-calendar', routerLink: 'manage-case'},
         {label: 'Documentation', icon: 'fa-book'},
         {label: 'Support', icon: 'fa-support'},
         {label: 'Social', icon: 'fa-twitter'}

@@ -1,0 +1,9 @@
+<p-dataTable [value]="cases" selectionMode="single" (onRowSelect)="onRowSelect($event)">
+  <p-column field="id" header="Id"></p-column>
+  <p-column field="caseNumber" header="Case Number"></p-column>
+  <p-column field="dateOfCase" header="dateOfCase"></p-column>
+</p-dataTable>
+
+<p-dialog header="Case Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+  <app-case-form [updateCase]="selectedCase" (caseToUpdate)="toUpdate($event)" (caseToDelete)="toDelete($event)"></app-case-form>
+</p-dialog>
