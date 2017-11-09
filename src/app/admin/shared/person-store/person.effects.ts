@@ -17,7 +17,7 @@ export class PersonEffectsService {
   personAdd$: Observable<Action> = this.actions$
     .ofType<personActions.AddPerson>(personActions.ADD_PERSON)
     .map(action => action.payload)
-    .switchMap((payload) => this.personService.add(payload).then(() => new personActions.SuccessAction('sucess')));
+    .switchMap((payload) => this.personService.add(payload).then((data) => new personActions.SuccessAction(data.key)));
 
   @Effect()
   personUpdate$: Observable<Action> = this.actions$

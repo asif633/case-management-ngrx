@@ -17,6 +17,8 @@ import { CaseFormComponent } from './case-form/case-form.component';
 import { EffectsModule } from '@ngrx/effects';
 import { PersonEffectsService } from './shared/person-store/person.effects';
 import { PersonService } from './shared/person-store/person.service';
+import { CaseService } from './shared/case-store/case.service';
+import { CaseEffectsService } from './shared/case-store/case.effect';
 
 @NgModule({
   imports: [
@@ -26,9 +28,9 @@ import { PersonService } from './shared/person-store/person.service';
     FormsModule,
     StoreModule.forFeature('personState', personReducer),
     StoreModule.forFeature('case', caseReducer),
-    EffectsModule.forFeature([PersonEffectsService]),
+    EffectsModule.forFeature([PersonEffectsService, CaseEffectsService]),
   ],
   declarations: [PersonsTableComponent, PersonFormComponent, PersonManagePageComponent, AdminDashboardPageComponent, CaseContainerComponent, CaseTableComponent, CaseFormComponent],
-  providers: [PersonService]
+  providers: [PersonService, CaseService]
 })
 export class AdminModule { }

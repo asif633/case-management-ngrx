@@ -4,7 +4,10 @@ import { Case } from '../shared/case-store/case.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../shared/store/state';
 import { selectAllCases } from '../shared/case-store/case.state';
-import { AddCase, DeleteCase, UpdateCase, SelectCase } from '../shared/case-store/case.actions';
+import { AddCase, DeleteCase, UpdateCase, SelectCase, LoadCases, LoadCase } from '../shared/case-store/case.actions';
+import { Person } from '../shared/person-store/person.model';
+import { getPersons } from '../shared/person-store/person.state';
+import { LoadPersons } from '../shared/person-store/person.actions';
 
 @Component({
   selector: 'app-case-container',
@@ -14,6 +17,7 @@ import { AddCase, DeleteCase, UpdateCase, SelectCase } from '../shared/case-stor
 export class CaseContainerComponent implements OnInit {
 
   cases: Observable<Case[]>;
+  persons: Observable<Person[]>;
 
   constructor(private store: Store<AppState>) { }
 
@@ -28,6 +32,9 @@ export class CaseContainerComponent implements OnInit {
     //   {id: '1', name: 'Asif', age: 32, profession: 'SW'}
     // ];
     this.cases = this.store.select(selectAllCases);
+    this.persons = this.store.select(getPersons);
+    this.store.dispatch(new LoadCases());
+    this.store.dispatch(new LoadPersons());
   }
 
   getcase(event) {
@@ -45,7 +52,7 @@ export class CaseContainerComponent implements OnInit {
   }
 
   getSelected(event){
-    this.store.dispatch(new SelectCase(event));
+    this.store.dispatch(new LoadCase(event.$key));
   }
 
 }

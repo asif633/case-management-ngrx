@@ -19,6 +19,18 @@
 
     <div class="ui-g-12 ui-md-4">
         <div class="ui-inputgroup">
+            <p-listbox [options]="casePersons" optionLabel="name" readOnly="true"></p-listbox>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <p-multiSelect [options]="persons" [(ngModel)]="selectedPersons" optionLabel="name"></p-multiSelect>
+        </div>
+    </div>
+
+    <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
             <button pButton type="button" (click)="add()" label="Add"></button>
             <button pButton type="button" (click)="update()" label="Update"></button>
             <button pButton type="button" (click)="delete()" label="Delete"></button>

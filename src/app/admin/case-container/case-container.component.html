@@ -7,6 +7,6 @@
     (selCase)="getSelected($event)"></app-case-table>
   </div>
   <div class="ui-g-12 ui-md-6 ui-lg-6">
-    <app-case-form (caseToEmit)="getcase($event)"></app-case-form>
+    <app-case-form (caseToEmit)="getcase($event)" [persons]="persons | async"></app-case-form>
   </div>
 </div>

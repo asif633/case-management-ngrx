@@ -21,7 +21,6 @@ export class LoadPersonsSuccess implements Action {
     readonly type = LOAD_PERSON_SUCCESS;
     constructor(public payload: Person[]) {}
 }
-
 export class LoadPerson implements Action {
     readonly type = LOAD_SINGLE;
     constructor(public payload: string) {}
@@ -31,6 +30,7 @@ export class LoadPersonSuccess implements Action {
     readonly type = LOAD_SINGLE_SUCCESS;
     constructor(public payload: Person) {}
 }
+
 
 export class AddPerson implements Action {
     readonly type = ADD_PERSON;

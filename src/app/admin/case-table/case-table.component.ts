@@ -1,5 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Case } from '../shared/case-store/case.model';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../shared/store/state';
+import { getSelectedCase } from '../shared/case-store/case.state';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-case-table',
@@ -9,20 +13,20 @@ import { Case } from '../shared/case-store/case.model';
 export class CaseTableComponent implements OnInit {
 
   @Input() cases: Case[];
-  selectedCase: Case;
+  selectedCase: Observable<Case>;
   @Output() selCase: EventEmitter<Case>;
   displayDialog: boolean;
   @Output() caseToUpdate: EventEmitter<Case>;
   @Output() caseToDelete: EventEmitter<string>;
 
-  constructor() {
+  constructor(private store: Store<AppState>) {
     this.caseToUpdate = new EventEmitter<Case>();
     this.caseToDelete = new EventEmitter<string>();
     this.selCase = new EventEmitter<Case>();
   }
 
   ngOnInit(){
-
+    this.selectedCase = this.store.select(getSelectedCase);
   }
 
   toUpdate(event) {
@@ -38,7 +42,7 @@ export class CaseTableComponent implements OnInit {
   onRowSelect(event) {
     this.displayDialog = true;
     console.log('dia', event.data);
-    this.selectedCase = event.data;
+    //this.selectedCase = event.data;
     this.selCase.emit(event.data);
   }
 

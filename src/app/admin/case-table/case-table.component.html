@@ -5,5 +5,5 @@
 </p-dataTable>
 
 <p-dialog header="Case Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
-  <app-case-form [updateCase]="selectedCase" (caseToUpdate)="toUpdate($event)" (caseToDelete)="toDelete($event)"></app-case-form>
+  <app-case-form [updateCase]="selectedCase | async" (caseToUpdate)="toUpdate($event)" (caseToDelete)="toDelete($event)"></app-case-form>
 </p-dialog>

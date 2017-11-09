@@ -1,7 +1,7 @@
 import { createEntityAdapter, EntityState, EntityAdapter } from '@ngrx/entity';
 import * as caseActions from './case.actions';
 import { Case } from './case.model';
-import { UPDATE_Case } from './case.actions';
+import { UPDATE_Case, LOAD_Case } from './case.actions';
 
 export interface CaseState extends EntityState<Case> {
     selectedCase: Case;
@@ -23,6 +23,17 @@ export function caseReducer(
     action: caseActions.Actions
 ) {
     switch (action.type) {
+        case caseActions.LOAD_Case: {
+            return {
+              ...state
+            };
+          }
+          case caseActions.LOAD_Case_SUCCESS: {
+            return {
+                ...caseAdapter.addMany(action.payload, state),
+                selectedCase: state.selectedCase,
+            };
+          }
         case caseActions.ADD_Case:
             return {
                 ...caseAdapter.addOne(action.payload, state),
