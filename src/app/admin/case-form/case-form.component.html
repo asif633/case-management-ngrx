@@ -20,6 +20,7 @@
     <div class="ui-g-12 ui-md-4">
         <div class="ui-inputgroup">
             <p-listbox [options]="casePersons" optionLabel="name" readOnly="true"></p-listbox>
+            <p-chips [(ngModel)]="casePersons" field="name" disabled="true"></p-chips>
         </div>
     </div>
 

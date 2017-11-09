@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../shared/store/state';
 import { getSelectedCase } from '../shared/case-store/case.state';
 import { Observable } from 'rxjs/Rx';
+import { Person } from '../shared/person-store/person.model';
 
 @Component({
   selector: 'app-case-table',
@@ -18,6 +19,7 @@ export class CaseTableComponent implements OnInit {
   displayDialog: boolean;
   @Output() caseToUpdate: EventEmitter<Case>;
   @Output() caseToDelete: EventEmitter<string>;
+  @Input() persons: Person[];
 
   constructor(private store: Store<AppState>) {
     this.caseToUpdate = new EventEmitter<Case>();

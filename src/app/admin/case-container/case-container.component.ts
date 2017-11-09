@@ -44,10 +44,12 @@ export class CaseContainerComponent implements OnInit {
   }
 
   toUpdate(event) {
+    console.log('eve', event);
     this.store.dispatch(new UpdateCase(event));
   }
 
   toDelete(event) {
+    console.log('eve', event);
     this.store.dispatch(new DeleteCase(event));
   }
 

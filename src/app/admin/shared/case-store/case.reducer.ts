@@ -50,7 +50,7 @@ export function caseReducer(
             };
         case caseActions.DELETE_Case:
             return {
-                ...caseAdapter.removeOne(action.payload, state),
+                ...caseAdapter.removeOne(action.payload.id, state),
                 selectedCase: state.selectedCase
             };
         case caseActions.SELECT_Case:

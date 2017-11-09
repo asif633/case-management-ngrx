@@ -50,4 +50,7 @@ export class CaseService {
   addCasePersons(caseKey: string, personkey: string) {
     this.db.object(`casePersons/${caseKey}/${personkey}`).set(true);
   }
+  deleteCasePersons(caseKey: string) {
+    return this.db.list(`casePersons`).remove(caseKey);
+  }
 }

@@ -4,7 +4,8 @@
     [cases]="cases | async" 
     (caseToUpdate)="toUpdate($event)" 
     (caseToDelete)="toDelete($event)" 
-    (selCase)="getSelected($event)"></app-case-table>
+    (selCase)="getSelected($event)"
+    [persons]="persons | async"></app-case-table>
   </div>
   <div class="ui-g-12 ui-md-6 ui-lg-6">
     <app-case-form (caseToEmit)="getcase($event)" [persons]="persons | async"></app-case-form>

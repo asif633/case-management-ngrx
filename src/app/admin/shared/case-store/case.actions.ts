@@ -44,7 +44,7 @@ export class UpdateCase implements Action {
 
 export class DeleteCase implements Action {
     readonly type = DELETE_Case;
-    constructor(public payload: string) {}
+    constructor(public payload: Case) {}
 }
 
 export class SelectCase implements Action {

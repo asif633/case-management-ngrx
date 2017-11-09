@@ -11,7 +11,7 @@ import { Person } from '../shared/person-store/person.model';
 export class CaseFormComponent implements OnInit {
   @Output() caseToEmit: EventEmitter<Case>;
   @Output() caseToUpdate: EventEmitter<Case>;
-  @Output() caseToDelete: EventEmitter<string>;
+  @Output() caseToDelete: EventEmitter<Case>;
   @Input() updateCase: Case;
   @Input() persons: Person[];
   selectedPersons: Person[];
@@ -23,7 +23,7 @@ export class CaseFormComponent implements OnInit {
   constructor() {
     this.caseToEmit = new EventEmitter<Case>();
     this.caseToUpdate = new EventEmitter<Case>();
-    this.caseToDelete = new EventEmitter<string>();
+    this.caseToDelete = new EventEmitter<Case>();
   }
 
   ngOnInit() {
@@ -49,11 +49,11 @@ export class CaseFormComponent implements OnInit {
   }
 
   update() {
-    this.caseToUpdate.emit({id: this.id, caseNumber: this.caseNumber, dateOfCase: this.dateOfCase, persons: this.selectedPersons});
+    this.caseToUpdate.emit({$key: this.updateCase.$key ,id: this.id, caseNumber: this.caseNumber, dateOfCase: this.dateOfCase, persons: this.selectedPersons});
   }
 
   delete() {
-    this.caseToDelete.emit(this.id);
+    this.caseToDelete.emit(this.updateCase);
   }
 
 }
