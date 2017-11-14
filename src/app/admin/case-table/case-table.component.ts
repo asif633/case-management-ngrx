@@ -9,7 +9,7 @@ import { Person } from '../shared/person-store/person.model';
 @Component({
   selector: 'app-case-table',
   templateUrl: './case-table.component.html',
-  styleUrls: ['./case-table.component.css']
+  styleUrls: ['./case-table.component.scss']
 })
 export class CaseTableComponent implements OnInit {
 

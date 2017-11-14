@@ -4,7 +4,7 @@ import { Person } from '../shared/person-store/person.model';
 @Component({
   selector: 'app-persons-table',
   templateUrl: './persons-table.component.html',
-  styleUrls: ['./persons-table.component.css'],
+  styleUrls: ['./persons-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PersonsTableComponent implements OnInit {

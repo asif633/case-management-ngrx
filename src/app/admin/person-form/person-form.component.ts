@@ -5,7 +5,7 @@ import { UUID } from 'angular2-uuid';
 @Component({
   selector: 'app-person-form',
   templateUrl: './person-form.component.html',
-  styleUrls: ['./person-form.component.css']
+  styleUrls: ['./person-form.component.scss']
 })
 export class PersonFormComponent implements OnInit {
   @Output() personToEmit: EventEmitter<Person>;

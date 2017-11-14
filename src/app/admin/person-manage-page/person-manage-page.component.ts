@@ -9,7 +9,7 @@ import { AddPerson, UpdatePerson, DeletePerson, LoadPersons } from '../shared/pe
 @Component({
   selector: 'app-person-manage-page',
   templateUrl: './person-manage-page.component.html',
-  styleUrls: ['./person-manage-page.component.css']
+  styleUrls: ['./person-manage-page.component.scss']
 })
 export class PersonManagePageComponent implements OnInit {
   persons: Observable<Person[]>;

@@ -6,7 +6,7 @@ import { Person } from '../shared/person-store/person.model';
 @Component({
   selector: 'app-case-form',
   templateUrl: './case-form.component.html',
-  styleUrls: ['./case-form.component.css']
+  styleUrls: ['./case-form.component.scss']
 })
 export class CaseFormComponent implements OnInit {
   @Output() caseToEmit: EventEmitter<Case>;
